@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sorting-algorithm-visualizer">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src" />
+      <root url="file://$PROJECT_DIR$/../../javafx-sdk-24" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../javafx-sdk-24" recursive="false" type="SOURCES" />
+  </library>
+</component>
