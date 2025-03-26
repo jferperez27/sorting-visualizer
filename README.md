@@ -1,7 +1,7 @@
 
 # Sorting Algorithms Visualizer
 
-This project was originally made to practice my personal design and implementation of several popular sorting algorithms for my own personal understanding. Although implementing such sorting algorithms facilitated my understanding for such sorting techniques, I found it hard for me to understand why some algorithms were more preferable than others. Thus, the inspiration behind this project.
+This project was originally made to practice my personal design and implementation of several popular sorting algorithms for my own personal understanding. Although implementing such sorting algorithms facilitated my understanding , I found it hard for me to understand why some algorithms were more preferable than others. Thus, the inspiration behind this project.
 
 
 
