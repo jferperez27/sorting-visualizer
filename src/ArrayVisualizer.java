@@ -1,3 +1,4 @@
+import javafx.animation.Timeline;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -10,16 +11,17 @@ public class ArrayVisualizer {
     private ArrayList<Rectangle> arrayObjects;
     private boolean isPopulated;
     private Sort currentSort;
-    private int oldPivot;
     private int currentPivot;
+    public Timeline timeline;
 
 
     /**
      * Constructor for ArrayVisualizer initializes variables and starts generating/visualizing a new, random array.
      * @param arrayNode - node to visualize array in
      */
-    public ArrayVisualizer(HBox arrayNode) {
+    public ArrayVisualizer(HBox arrayNode, Timeline time) {
         this.arrayNode = arrayNode;
+        this.timeline = time;
         this.arrayValues = new ArrayList<>();
         this.arrayObjects = new ArrayList<>();
         this.arrayNode.setAlignment(Pos.BOTTOM_LEFT);
@@ -87,7 +89,15 @@ public class ArrayVisualizer {
     }
 
     public void updateVisuals() {
-        this.removeVisuals();
-        this.visualizeArray();
+        for (int i = 0; i < Constants.ARRAY_MAX_LENGTH; i++) {
+            int height = this.arrayValues.get(i);
+            Rectangle rect = this.arrayObjects.get(i);
+            rect.setHeight(height);
+            rect.setFill(Color.WHITE); // Reset color
+        }
+    }
+
+    public int getAccesses() {
+        return this.currentSort.getAccesses();
     }
 }

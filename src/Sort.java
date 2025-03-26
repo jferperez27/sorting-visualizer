@@ -5,5 +5,6 @@ public interface Sort {
     public ArrayList<Integer> getArray();
     public int getPivot();
     public void resetArray(ArrayList<Integer> newArray);
+    public int getAccesses();
 
 }
