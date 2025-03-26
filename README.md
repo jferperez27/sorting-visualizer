@@ -3,6 +3,11 @@
 
 This project was originally made to practice my personal design and implementation of several popular sorting algorithms for my own personal understanding. Although implementing such sorting algorithms facilitated my understanding for such sorting techniques, I found it hard for me to understand why some algorithms were more preferable than others. Thus, the inspiration behind this project.
 
+## Screenshots
+<img width="1605" alt="Screenshot 2025-03-26 at 4 05 56 AM" src="https://github.com/user-attachments/assets/2dba6dc6-5bb2-4273-934d-27233a28ef38" />
+<img width="1603" alt="Screenshot 2025-03-26 at 12 40 16 PM" src="https://github.com/user-attachments/assets/6ec84227-a99c-4572-bcd1-968d7883eba2" />
+
+
 
 ## Authors
 
