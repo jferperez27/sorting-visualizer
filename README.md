@@ -1,7 +1,7 @@
 
 # Sorting Algorithms Visualizer
 
-This project was originally made to practice my personal design and implementation of several popular sorting algorithms for my own personal understanding. Although implementing such sorting algorithms facilitated my understanding, I found it hard for me to understand why some algorithms were more preferable than others. Thus, the inspiration behind this project.
+This program utilizes some popular popular sorting algorithms by calling on such algorithms to a randomized array of integers. This array of integers is visualized as a bar, its height being dictated by the integer in the array in its corresponding index. The user can call on the sorting algorithm of choice and begin the sorting process on the array. Every change on the array of integers is shown visually by updating the bars on the screen to visualize the algorithm in real-time (default speed is exceptionally slower than an actual sorting algorithm to make it visuallizy easier to digest).
 
 
 
@@ -21,7 +21,6 @@ This project was originally made to practice my personal design and implementati
 - Light/dark mode toggle 
 - Custom sorting speed
 - Multiple algorithms to choose from
-- Pivot and current access highlighted during live sorting
 
 
 
@@ -37,9 +36,8 @@ If you have any feedback at all, please reach out to me at juan_j_fernandez@brow
 
 
 ## 🚀 Why this project?
-I'm a Junior at Brown University studying computer science and political science. 
 
-In high school, I came across a video on YouTube showcasing a program that visualized sorting algorithms. Although I wasn’t aware of how this would apply to me in the future, at the time I found it quite satisfying how a program was able to sort such bars from smallest to largest in a couple seconds. This weirdly satisfying video would become the inspiration towards completing this project. I linked the video below since I will admit that it served as the driving force towards what I wanted this sorting visualizer to do at a high-level. 
+Sorting algorithms are essential for any programmer to understand and recreate. Although at first the main reason behind this project was to refresh my current knowledge with JavaFX and practice my implementation of sorting algorithms, I quickly learned that this project really helped with my understanding of how such algorithms functioned. I've always been a visual learner, so I hope that others find this visualizer just as helpful in understanding such a fundamental concept in computer science.
 
 ## 🤓 About the Project/Implementation
 
