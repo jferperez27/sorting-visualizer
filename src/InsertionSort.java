@@ -40,6 +40,7 @@ public class InsertionSort implements Sort {
 
     private void whileLoopSort() {
         this.accesses += 2;
+        System.out.println(this.currentIteration);
         if (this.currentIndex > 0 && this.toSort.get(this.currentIndex - 1) > this.toSort.get(this.currentIndex)) {
             this.whileTimelineActive = true;
             this.swap(this.currentIndex, this.currentIndex - 1);
@@ -52,10 +53,12 @@ public class InsertionSort implements Sort {
             this.whileTimelineActive = false;
             this.currentIteration++;
         }
+
+
     }
 
     private void setTimeline() {
-        KeyFrame kf = new KeyFrame(Duration.millis(0.25), (ActionEvent e) -> this.whileLoopSort());
+        KeyFrame kf = new KeyFrame(Duration.millis(Constants.WHILE_LOOP_SPEED), (ActionEvent e) -> this.whileLoopSort());
         this.whileTimeline = new Timeline(kf);
         this.whileTimeline.setCycleCount(Animation.INDEFINITE);
     }

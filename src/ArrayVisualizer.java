@@ -14,6 +14,9 @@ public class ArrayVisualizer {
     private int currentPivot;
     public Timeline timeline;
 
+    public enum sortChoose {
+        LEFT, RIGHT
+    }
 
     /**
      * Constructor for ArrayVisualizer initializes variables and starts generating/visualizing a new, random array.
@@ -27,6 +30,8 @@ public class ArrayVisualizer {
         this.arrayNode.setAlignment(Pos.BOTTOM_LEFT);
         this.arrayNode.setSpacing(Constants.ARRAY_PADDING);
         this.currentSort = new InsertionSort(this);
+        //this.currentSort = new MergeSort(this);
+
         // Randomly generates the array
         this.generateArray();
         this.isPopulated = true;
@@ -85,7 +90,7 @@ public class ArrayVisualizer {
     public void setPivot(int currentPivot, int oldPivot) {
         this.currentPivot = this.currentSort.getPivot();
         this.arrayObjects.get(currentPivot).setFill(Color.GREEN);
-        this.arrayObjects.get(oldPivot).setFill(Color.WHITE);
+        this.arrayObjects.get(oldPivot).setFill(Color.RED);
     }
 
     public void updateVisuals() {
@@ -94,6 +99,12 @@ public class ArrayVisualizer {
             Rectangle rect = this.arrayObjects.get(i);
             rect.setHeight(height);
             rect.setFill(Color.WHITE); // Reset color
+        }
+    }
+
+    public void setSorted() {
+        for (int i = 0; i < Constants.ARRAY_MAX_LENGTH; i++) {
+            this.arrayObjects.get(i).setFill(Color.GREEN);
         }
     }
 

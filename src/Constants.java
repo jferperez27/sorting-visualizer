@@ -14,4 +14,6 @@ public class Constants {
     public static final int ARRAY_REC_LENGTH = 8;
     // Bar padding
     public static final int ARRAY_PADDING = 1;
+    public static double SORT_SPEED = 0.25; // Default: 0.25
+    public static double WHILE_LOOP_SPEED = 1; // Default: 0.25
 }
