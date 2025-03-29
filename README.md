@@ -1,7 +1,7 @@
 
 # Sorting Algorithms Visualizer
 
-This program utilizes some popular popular sorting algorithms by calling on such algorithms to a randomized array of integers. This array of integers is visualized as a bar, its height being dictated by the integer in the array in its corresponding index. The user can call on the sorting algorithm of choice and begin the sorting process on the array. Every change on the array of integers is shown visually by updating the bars on the screen to visualize the algorithm in real-time (default speed is exceptionally slower than an actual sorting algorithm to make it visuallizy easier to digest).
+This program utilizes some popular popular sorting algorithms by calling on such algorithms to a randomized array of integers. This array of integers is visualized as a bar, its height being dictated by the integer in the array in its corresponding index. The user can call on the sorting algorithm of choice and begin the sorting process on the array. Every change on the array of integers is shown visually by updating the bars on the screen to visualize the algorithm in real-time (default speed is exceptionally slower than an actual sorting algorithm to make it visually easier to digest).
 
 
 
