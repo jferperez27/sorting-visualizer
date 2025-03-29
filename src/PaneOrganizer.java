@@ -17,6 +17,7 @@ public class PaneOrganizer {
     private BorderPane root;
     private HBox arrayNode;
     private ArrayVisualizer visualizer;
+    private double speed;
     private boolean timelineActive;
     private boolean sorting;
     private boolean sortingFinished;
@@ -30,6 +31,10 @@ public class PaneOrganizer {
     private Label currentProgramStatus;
     private Label timeComplexity;
 
+    public enum Increment {
+        INCREASE, DECREASE
+    }
+
     /**
      * Constructor for PaneOrganizer
      */
@@ -40,6 +45,7 @@ public class PaneOrganizer {
         this.sorting = false;
         this.sortingFinished = true;
         this.totalAccesses = 0;
+        this.speed = 1;
         this.setBackground();
         this.setTimeline();
         this.setTextBoxes();
@@ -57,7 +63,7 @@ public class PaneOrganizer {
     }
 
     private void setTimeline() {
-        KeyFrame kf = new KeyFrame(Duration.millis(0.25), (ActionEvent e) -> this.startSort());
+        KeyFrame kf = new KeyFrame(Duration.millis(Constants.SORT_SPEED), (ActionEvent e) -> this.startSort());
         this.sortingTimeline = new Timeline(kf);
         this.sortingTimeline.setCycleCount(Animation.INDEFINITE);
 
@@ -71,7 +77,7 @@ public class PaneOrganizer {
             this.sortingTimeline.stop();
             this.sorting = false;
             this.sortingFinished = true; // might not be useful
-            System.out.println("sorting finished");
+            this.visualizer.setSorted();
             this.updateStatus("Sorting Complete!");
         }
         this.sortingFinished = false; //might not be useful
@@ -80,12 +86,13 @@ public class PaneOrganizer {
     }
 
     private void updateAccesses() {
-        this.numOfAccesses.setText("Num of Accesses: " + this.getAccesses());
+        this.numOfAccesses.setText(" Num of Accesses: " + this.getAccesses());
     }
 
     private void updateStatus(String status) {
-        this.currentProgramStatus.setText("Current Visualizer Status: " + status);
+        this.currentProgramStatus.setText(" Current Visualizer Status: " + status);
     }
+
 
     private void toggleTimeline() {
         if (this.timelineActive) {
@@ -99,6 +106,7 @@ public class PaneOrganizer {
         }
     }
 
+
     private void handleKeyInput(KeyEvent e) {
         KeyCode code = e.getCode();
         switch (code) {
@@ -110,7 +118,6 @@ public class PaneOrganizer {
             case SPACE:
                 if (this.sortingFinished && !this.sorting) {
                     this.toggleTimeline();
-                    System.out.println("Space detected");
                 }
                 break;
             default:
@@ -149,11 +156,11 @@ public class PaneOrganizer {
     private void setUpInfoBox(VBox leftText) {
         Font firaDesc = Font.loadFont(getClass().getResourceAsStream("/fonts/FiraCode-Bold.ttf"), 15);
 
-        this.currentAlgorithm = new Label("Current Algorithm: " + "Insertion Sort");
-        this.timeComplexity = new Label("Current Algorithmic Time Complexity: " + "O(n)");
-        this.numOfAccesses = new Label("Num of Accesses: " + "0");
-        this.currentSpeed = new Label("Current Speed: " + "1");
-        this.currentProgramStatus = new Label("Current Visualizer Status: " + "Paused");
+        this.currentAlgorithm = new Label(" Current Algorithm: " + "Insertion Sort");
+        this.timeComplexity = new Label(" Current Algorithmic Time Complexity: " + "O(n)");
+        this.numOfAccesses = new Label(" Num of Accesses: " + "0");
+        this.currentSpeed = new Label(" Current Speed: " + "1");
+        this.currentProgramStatus = new Label(" Current Visualizer Status: " + "Paused");
         this.currentAlgorithm.setTextFill(Color.WHITE);
         this.timeComplexity.setTextFill(Color.WHITE);
         this.numOfAccesses.setTextFill(Color.WHITE);
