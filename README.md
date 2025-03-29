@@ -16,9 +16,10 @@ This program utilizes some popular popular sorting algorithms by calling on such
 - Stop/Start sorting
 - Additional info during sorting (accesses, etc.)
 - Pivot and current access highlighted during live sorting
+- Light/dark mode toggle 
+
 
 (Currently Implementing)
-- Light/dark mode toggle 
 - Custom sorting speed
 - Multiple algorithms to choose from
 
@@ -26,8 +27,11 @@ This program utilizes some popular popular sorting algorithms by calling on such
 
 ## Screenshots
 
-<img width="1605" alt="Screenshot 2025-03-26 at 4 05 56 AM" src="https://github.com/user-attachments/assets/2dba6dc6-5bb2-4273-934d-27233a28ef38" />
-<img width="1603" alt="Screenshot 2025-03-26 at 12 40 16 PM" src="https://github.com/user-attachments/assets/6ec84227-a99c-4572-bcd1-968d7883eba2" />
+<img width="1601" alt="DarkModeBegin" src="https://github.com/user-attachments/assets/430e4176-e0ac-4abb-8899-bc495f5880f0" />
+<img width="1601" alt="DarkModeMid" src="https://github.com/user-attachments/assets/bee99157-b496-48e3-ac17-cfc0d9084e65" />
+<img width="1600" alt="DarkModeComplete" src="https://github.com/user-attachments/assets/f32c072d-34fa-4508-abda-7bf4c5e8fa46" />
+<img width="1600" alt="LightModeMid" src="https://github.com/user-attachments/assets/18926381-5637-4275-9d68-d33bc26281ed" />
+
 
 
 ## Feedback
