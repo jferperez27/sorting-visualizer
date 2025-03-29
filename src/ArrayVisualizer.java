@@ -13,6 +13,8 @@ public class ArrayVisualizer {
     private Sort currentSort;
     private int currentPivot;
     public Timeline timeline;
+    private Color barColor;
+    private boolean isSorted;
 
     public enum sortChoose {
         LEFT, RIGHT
@@ -27,8 +29,10 @@ public class ArrayVisualizer {
         this.timeline = time;
         this.arrayValues = new ArrayList<>();
         this.arrayObjects = new ArrayList<>();
+        this.isSorted = false;
         this.arrayNode.setAlignment(Pos.BOTTOM_LEFT);
         this.arrayNode.setSpacing(Constants.ARRAY_PADDING);
+        this.barColor = Color.WHITE;
         this.currentSort = new InsertionSort(this);
         //this.currentSort = new MergeSort(this);
 
@@ -41,6 +45,7 @@ public class ArrayVisualizer {
      * Populates the arrayList with random values
      */
     public void generateArray() {
+        this.isSorted = false;
         if (this.isPopulated) {
             this.removeVisuals();
             this.isPopulated = false;
@@ -71,7 +76,7 @@ public class ArrayVisualizer {
     private void visualizeArray() {
         for (int i = 0; i < Constants.ARRAY_MAX_LENGTH; i++) {
             int currentArrayValue = this.arrayValues.get(i);
-            this.arrayObjects.add(i, new Rectangle(Constants.ARRAY_REC_LENGTH, currentArrayValue, Color.WHITE));
+            this.arrayObjects.add(i, new Rectangle(Constants.ARRAY_REC_LENGTH, currentArrayValue, this.barColor));
             this.arrayNode.getChildren().add(this.arrayObjects.get(i));
         }
     }
@@ -98,7 +103,7 @@ public class ArrayVisualizer {
             int height = this.arrayValues.get(i);
             Rectangle rect = this.arrayObjects.get(i);
             rect.setHeight(height);
-            rect.setFill(Color.WHITE); // Reset color
+            rect.setFill(this.barColor); // Reset color
         }
     }
 
@@ -106,9 +111,26 @@ public class ArrayVisualizer {
         for (int i = 0; i < Constants.ARRAY_MAX_LENGTH; i++) {
             this.arrayObjects.get(i).setFill(Color.GREEN);
         }
+        this.isSorted = true;
     }
 
     public int getAccesses() {
         return this.currentSort.getAccesses();
+    }
+
+    public void changeBarColor(PaneOrganizer.BackgroundColor color) {
+        if (!this.isSorted) {
+            if (color == PaneOrganizer.BackgroundColor.BLACK_MODE) {
+                this.barColor = Color.BLACK;
+                this.updateVisuals();
+            } else {
+                this.barColor = Color.WHITE;
+                this.updateVisuals();
+            }
+        } else if (color == PaneOrganizer.BackgroundColor.BLACK_MODE) {
+            this.barColor = Color.BLACK;
+        } else {
+            this.barColor = Color.WHITE;
+        }
     }
 }

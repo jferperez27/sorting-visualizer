@@ -30,9 +30,15 @@ public class PaneOrganizer {
     private Label currentSpeed;
     private Label currentProgramStatus;
     private Label timeComplexity;
+    private Label aboutLabel;
+    private BackgroundColor background;
 
     public enum Increment {
         INCREASE, DECREASE
+    }
+
+    public enum BackgroundColor {
+        BLACK_MODE, WHITE_MODE
     }
 
     /**
@@ -60,6 +66,42 @@ public class PaneOrganizer {
         BackgroundFill fill = new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY);
         Background background = new Background(fill);
         this.root.setBackground(background);
+        this.background = BackgroundColor.BLACK_MODE;
+    }
+
+    private void toggleBackground() {
+        BackgroundFill black = new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY);
+        BackgroundFill white = new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY);
+
+        if (this.background == BackgroundColor.BLACK_MODE) { // if background is black
+            this.background = BackgroundColor.WHITE_MODE;
+            this.root.setBackground(new Background(white)); // change background to white
+            this.visualizer.changeBarColor(BackgroundColor.BLACK_MODE); // change bars to black
+            this.toggleLabels(BackgroundColor.BLACK_MODE);
+        } else { // if background is white
+            this.background = BackgroundColor.BLACK_MODE;
+            this.root.setBackground(new Background(black)); // change background to black
+            this.visualizer.changeBarColor(BackgroundColor.WHITE_MODE); // change bars to white
+            this.toggleLabels(BackgroundColor.WHITE_MODE);
+        }
+    }
+
+    private void toggleLabels(BackgroundColor color) {
+        if (color == BackgroundColor.BLACK_MODE) {
+            this.currentAlgorithm.setTextFill(Color.BLACK);
+            this.timeComplexity.setTextFill(Color.BLACK);
+            this.numOfAccesses.setTextFill(Color.BLACK);
+            this.currentSpeed.setTextFill(Color.BLACK);
+            this.currentProgramStatus.setTextFill(Color.BLACK);
+            this.aboutLabel.setTextFill(Color.BLACK);
+        } else {
+            this.currentAlgorithm.setTextFill(Color.WHITE);
+            this.timeComplexity.setTextFill(Color.WHITE);
+            this.numOfAccesses.setTextFill(Color.WHITE);
+            this.currentSpeed.setTextFill(Color.WHITE);
+            this.currentProgramStatus.setTextFill(Color.WHITE);
+            this.aboutLabel.setTextFill(Color.WHITE);
+        }
     }
 
     private void setTimeline() {
@@ -120,6 +162,10 @@ public class PaneOrganizer {
                     this.toggleTimeline();
                 }
                 break;
+            case T:
+                this.toggleBackground();
+                System.out.println("toggle background");
+                break;
             default:
                 break;
 
@@ -140,12 +186,12 @@ public class PaneOrganizer {
 
         this.setUpInfoBox(leftText);
 
-        Label right = new Label("Sorting Algorithm Visualizer  \n By: Juan Fernández-Pérez" +
-                "\n \nControls:\nR - Randomize Array\nSPACE - Toggle Sorting");
-        right.setTextFill(Color.WHITE);
-        right.setFont(fira);
+        this.aboutLabel = new Label("Sorting Algorithm Visualizer  \n By: Juan Fernández-Pérez" +
+                "\n \nControls:\nR - Randomize Array\nSPACE - Toggle Sorting\nT - Dark/Light Mode");
+        this.aboutLabel.setTextFill(Color.WHITE);
+        this.aboutLabel.setFont(fira);
 
-        rightText.getChildren().add(right);
+        rightText.getChildren().add(this.aboutLabel);
 
         HBox.setHgrow(spacer, Priority.ALWAYS);
         textHolder.getChildren().addAll(leftText, spacer, rightText);
@@ -157,7 +203,7 @@ public class PaneOrganizer {
         Font firaDesc = Font.loadFont(getClass().getResourceAsStream("/fonts/FiraCode-Bold.ttf"), 15);
 
         this.currentAlgorithm = new Label(" Current Algorithm: " + "Insertion Sort");
-        this.timeComplexity = new Label(" Current Algorithmic Time Complexity: " + "O(n)");
+        this.timeComplexity = new Label(" Current Algorithmic Time Complexity: " + "O(n^2)");
         this.numOfAccesses = new Label(" Num of Accesses: " + "0");
         this.currentSpeed = new Label(" Current Speed: " + "1");
         this.currentProgramStatus = new Label(" Current Visualizer Status: " + "Paused");
