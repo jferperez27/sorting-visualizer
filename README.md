@@ -36,12 +36,6 @@ This program utilizes some popular popular sorting algorithms by calling on such
 <img src="https://github.com/user-attachments/assets/18926381-5637-4275-9d68-d33bc26281ed" width="503" />
 
 
-
-## Feedback
-
-If you have any feedback at all, please reach out to me at juan_j_fernandez@brown.edu
-
-
 ## 🚀 Why this project?
 
 Sorting algorithms are essential for any programmer to understand and recreate. Although at first the main reason behind this project was to refresh my current knowledge with JavaFX and practice my implementation of sorting algorithms, I quickly learned that this project really helped with my understanding of how such algorithms functioned. I've always been a visual learner, so I hope that others find this visualizer just as helpful in understanding such a fundamental concept in computer science.
