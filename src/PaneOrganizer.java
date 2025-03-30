@@ -3,7 +3,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -23,8 +22,6 @@ public class PaneOrganizer {
     private boolean sortingFinished;
     private Timeline sortingTimeline;
     private int totalAccesses;
-    private VBox programInfoTextBox;
-    private VBox aboutInfoTextBox;
     private Label currentAlgorithm;
     private Label numOfAccesses;
     private Label currentSpeed;
@@ -33,10 +30,9 @@ public class PaneOrganizer {
     private Label aboutLabel;
     private BackgroundColor background;
 
-    public enum Increment {
-        INCREASE, DECREASE
-    }
-
+    /**
+     * BackgroundColor used to describe the background.
+     */
     public enum BackgroundColor {
         BLACK_MODE, WHITE_MODE
     }
@@ -69,6 +65,9 @@ public class PaneOrganizer {
         this.background = BackgroundColor.BLACK_MODE;
     }
 
+    /**
+     * Toggles background to either black or white
+     */
     private void toggleBackground() {
         BackgroundFill black = new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY);
         BackgroundFill white = new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY);
@@ -86,6 +85,10 @@ public class PaneOrganizer {
         }
     }
 
+    /**
+     * Helper for toggleBackground, toggles the labels to ensure that labels are visible with background changes.
+     * @param color - current background color
+     */
     private void toggleLabels(BackgroundColor color) {
         if (color == BackgroundColor.BLACK_MODE) {
             this.currentAlgorithm.setTextFill(Color.BLACK);
@@ -104,6 +107,9 @@ public class PaneOrganizer {
         }
     }
 
+    /**
+     * Initializes the sortingTimeline.
+     */
     private void setTimeline() {
         KeyFrame kf = new KeyFrame(Duration.millis(Constants.SORT_SPEED), (ActionEvent e) -> this.startSort());
         this.sortingTimeline = new Timeline(kf);
@@ -113,6 +119,9 @@ public class PaneOrganizer {
         this.arrayNode.setOnKeyPressed(this::handleKeyInput);
     }
 
+    /**
+     * Begins the sorting process, to be called on by timeline in PaneOrganizer.
+     */
     private void startSort() {
         boolean sortStatus = this.visualizer.sort();
         if (!sortStatus) {
@@ -127,15 +136,24 @@ public class PaneOrganizer {
         this.updateAccesses();
     }
 
+    /**
+     * Updates the number of accesses via label setText
+     */
     private void updateAccesses() {
         this.numOfAccesses.setText(" Num of Accesses: " + this.getAccesses());
     }
 
+    /**
+     * Updates the current program status
+     * @param status - status to display
+     */
     private void updateStatus(String status) {
         this.currentProgramStatus.setText(" Current Visualizer Status: " + status);
     }
 
-
+    /**
+     * Toggles the timeline, either paused or start.
+     */
     private void toggleTimeline() {
         if (this.timelineActive) {
             this.sortingTimeline.pause();
@@ -148,21 +166,24 @@ public class PaneOrganizer {
         }
     }
 
-
+    /**
+     * Handles the user key input
+     * @param e - user input
+     */
     private void handleKeyInput(KeyEvent e) {
         KeyCode code = e.getCode();
         switch (code) {
-            case R:
+            case R: // Randomizes array
                 this.visualizer.generateArray();
                 this.sorting = false;
                 this.sortingFinished = true;
                 break;
-            case SPACE:
+            case SPACE: // starts or stops the sorting process
                 if (this.sortingFinished && !this.sorting) {
                     this.toggleTimeline();
                 }
                 break;
-            case T:
+            case T: // toggles the background color
                 this.toggleBackground();
                 System.out.println("toggle background");
                 break;
@@ -172,13 +193,20 @@ public class PaneOrganizer {
         }
     }
 
+    /**
+     * Gets current accesses from the ArrayVisualizer
+     * @return - String containing updated accesses
+     */
     private String getAccesses() {
         int accesses = this.visualizer.getAccesses();
         return String.valueOf(accesses);
     }
 
+    /**
+     * Sets up the text boxes.
+     */
     private void setTextBoxes() {
-        Font fira = Font.loadFont(getClass().getResourceAsStream("/fonts/FiraCode-Bold.ttf"), 10);
+        Font Fira = Font.loadFont(getClass().getResourceAsStream("/fonts/FiraCode-Bold.ttf"), 10);
         VBox leftText = new VBox();
         VBox rightText = new VBox();
         HBox textHolder = new HBox();
@@ -189,7 +217,7 @@ public class PaneOrganizer {
         this.aboutLabel = new Label("Sorting Algorithm Visualizer  \n By: Juan Fernández-Pérez" +
                 "\n \nControls:\nR - Randomize Array\nSPACE - Toggle Sorting\nT - Dark/Light Mode");
         this.aboutLabel.setTextFill(Color.WHITE);
-        this.aboutLabel.setFont(fira);
+        this.aboutLabel.setFont(Fira);
 
         rightText.getChildren().add(this.aboutLabel);
 
@@ -199,6 +227,10 @@ public class PaneOrganizer {
         this.root.setTop(textHolder);
     }
 
+    /**
+     * Sets up the info text box.
+     * @param leftText - VBox to hold the info text.
+     */
     private void setUpInfoBox(VBox leftText) {
         Font firaDesc = Font.loadFont(getClass().getResourceAsStream("/fonts/FiraCode-Bold.ttf"), 15);
 
@@ -221,7 +253,6 @@ public class PaneOrganizer {
         leftText.getChildren().addAll(this.currentAlgorithm, this.timeComplexity, this.numOfAccesses,
                 this.currentSpeed, this.currentProgramStatus);
     }
-
 
     /**
      * Returns the root node of the application.
