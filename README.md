@@ -27,7 +27,7 @@ This program utilizes some popular popular sorting algorithms by calling on such
 
 ## Screenshots
 
-<img src="https://github.com/user-attachments/assets/430e4176-e0ac-4abb-8899-bc495f5880f0" width="800" />
+<img src="https://github.com/user-attachments/assets/430e4176-e0ac-4abb-8899-bc495f5880f0" width="600" />
 
 <img src="https://github.com/user-attachments/assets/bee99157-b496-48e3-ac17-cfc0d9084e65" width="800" />
 
