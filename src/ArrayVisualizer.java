@@ -11,11 +11,13 @@ public class ArrayVisualizer {
     private ArrayList<Rectangle> arrayObjects;
     private boolean isPopulated;
     private Sort currentSort;
-    private int currentPivot;
     public Timeline timeline;
     private Color barColor;
     private boolean isSorted;
 
+    /**
+     * Enum to specify changes in currentSort
+     */
     public enum sortChoose {
         LEFT, RIGHT
     }
@@ -34,7 +36,6 @@ public class ArrayVisualizer {
         this.arrayNode.setSpacing(Constants.ARRAY_PADDING);
         this.barColor = Color.WHITE;
         this.currentSort = new InsertionSort(this);
-        //this.currentSort = new MergeSort(this);
 
         // Randomly generates the array
         this.generateArray();
@@ -81,6 +82,9 @@ public class ArrayVisualizer {
         }
     }
 
+    /**
+     * Removes the objects from the arrayNode
+     */
     private void removeVisuals() {
         for (int i = 0; i < Constants.ARRAY_MAX_LENGTH; i++) {
             Rectangle current = this.arrayObjects.get(i);
@@ -88,16 +92,27 @@ public class ArrayVisualizer {
         }
     }
 
+    /**
+     * Calls on sort to currentSort
+     * @return - currentSort boolean
+     */
     public boolean sort() {
         return this.currentSort.sort();
     }
 
-    public void setPivot(int currentPivot, int oldPivot) {
-        this.currentPivot = this.currentSort.getPivot();
-        this.arrayObjects.get(currentPivot).setFill(Color.GREEN);
-        this.arrayObjects.get(oldPivot).setFill(Color.RED);
+    /**
+     * Colors the current objects as the pivot and the currentAccess
+     * @param currentAccess - index of object to paint green
+     * @param pivot - index of object to paint red
+     */
+    public void setPivot(int currentAccess, int pivot) {
+        this.arrayObjects.get(currentAccess).setFill(Color.GREEN);
+        this.arrayObjects.get(pivot).setFill(Color.RED);
     }
 
+    /**
+     * Updates the objects visually.
+     */
     public void updateVisuals() {
         for (int i = 0; i < Constants.ARRAY_MAX_LENGTH; i++) {
             int height = this.arrayValues.get(i);
@@ -107,6 +122,9 @@ public class ArrayVisualizer {
         }
     }
 
+    /**
+     * Sets all objects green, signaling a fully sorted array.
+     */
     public void setSorted() {
         for (int i = 0; i < Constants.ARRAY_MAX_LENGTH; i++) {
             this.arrayObjects.get(i).setFill(Color.GREEN);
@@ -114,10 +132,18 @@ public class ArrayVisualizer {
         this.isSorted = true;
     }
 
+    /**
+     * Getter for the currentSort accesses
+     * @return - int of current accesses
+     */
     public int getAccesses() {
         return this.currentSort.getAccesses();
     }
 
+    /**
+     * Changes object colors to correspond depending on current background color.
+     * @param color - current color of background
+     */
     public void changeBarColor(PaneOrganizer.BackgroundColor color) {
         if (!this.isSorted) {
             if (color == PaneOrganizer.BackgroundColor.BLACK_MODE) {

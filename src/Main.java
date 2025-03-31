@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -9,9 +8,9 @@ public class Main extends Application {
      * Starts the application.
      */
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         PaneOrganizer organizer = new PaneOrganizer();
-        Scene scene = new Scene(organizer.getRoot(), Constants.WINDOW_LENGTH, Constants.WINDOW_WIDTH);
+        Scene scene = new Scene(organizer.getRoot(), Constants.WINDOW_LENGTH, Constants.WINDOW_HEIGHT);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Sorting Algorithm Visualizer");

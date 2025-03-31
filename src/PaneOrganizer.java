@@ -21,7 +21,6 @@ public class PaneOrganizer {
     private boolean sorting;
     private boolean sortingFinished;
     private Timeline sortingTimeline;
-    private int totalAccesses;
     private Label currentAlgorithm;
     private Label numOfAccesses;
     private Label currentSpeed;
@@ -46,7 +45,6 @@ public class PaneOrganizer {
         this.root.setBottom(this.arrayNode);
         this.sorting = false;
         this.sortingFinished = true;
-        this.totalAccesses = 0;
         this.speed = 1;
         this.setBackground();
         this.setTimeline();
@@ -185,7 +183,6 @@ public class PaneOrganizer {
                 break;
             case T: // toggles the background color
                 this.toggleBackground();
-                System.out.println("toggle background");
                 break;
             default:
                 break;
